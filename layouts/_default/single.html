@@ -3,5 +3,6 @@
 {{ if .Params.subtitle }}
   <h2>{{ .Params.subtitle }}</h2>
 {{ end }} 
+<div class="fw-bold">{{ .Page.customParam }}</div>
 {{ .Content }} 
 {{ end }}
