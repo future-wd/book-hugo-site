@@ -1,0 +1,7 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{ if .Params.subtitle }}
+  <h2>{{ .Params.subtitle }}</h2>
+{{ end }} 
+{{ .Content }} 
+{{ end }}
