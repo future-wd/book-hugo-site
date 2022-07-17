@@ -1,0 +1,4 @@
+baseURL: http://example.org/ # Used for generating URLs
+languageCode: en # Used for the RSS feed language
+defaultContentLanguage: en # Configures Hugo's content language (defaults to en)
+title: My First Hugo Site # Can be used throughout your site
