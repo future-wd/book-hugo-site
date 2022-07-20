@@ -1,3 +1,24 @@
 {{ define "main" }}
 {{ .Content }}
+{{ $time := time "2022-10-01T13:22:33" "Australia/Perth" }}    
+Day of year: {{ $time.YearDay }}    <br>
+Year: {{ $time.Year }} <Br>
+Month Text: {{ $time.Month }} <bR>
+Month Int: {{ printf "%d" $time.Month }} <br>
+Day of week: {{ $time.Weekday }}<br>
+Day of month: {{ $time.Day }}<br>
+Hour: {{ $time.Hour }}<br>
+Minute: {{ $time.Minute }} <br>
+Seconds: {{ $time.Second }} <br>
+Is Daylight Savings: {{ $time.IsDST }}<br>
+Location: {{ $time.Location }}<br>
+Zone: {{ $time }}
+<br>
+
+{{ $duration := duration "h" 1.5 }}
+{{ $duration }}
+
+<hr>
+Latest commit is <a href="{{ printf "https://github.com/gohugoio/hugo/commit/%s" .GitInfo.Hash }}">{{ .GitInfo.AbbreviatedHash}}</a>
+
 {{ end }}

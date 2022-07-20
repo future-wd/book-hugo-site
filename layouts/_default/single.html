@@ -3,6 +3,14 @@
 {{ if .Params.subtitle }}
   <h2>{{ .Params.subtitle }}</h2>
 {{ end }} 
-<div class="fw-bold">{{ .Page.customParam }}</div>
+{{ if .Params.customParam }}
+  <div class="fw-bold">{{ .Params.customParam }}</div>
+{{ end }}
+{{ if .Site.Params.customParam }}
+  <div class="fs-italic">{{ .Site.Params.customParam }}</div>
+{{ end }}
+{{/* if $customVariable }}
+  <div class="fs-underline">{{ $customVariable}}</div>
+{{ end */}}
 {{ .Content }} 
 {{ end }}
