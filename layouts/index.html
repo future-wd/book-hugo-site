@@ -20,5 +20,8 @@ Zone: {{ $time }}
 
 <hr>
 Latest commit is <a href="{{ printf "https://github.com/gohugoio/hugo/commit/%s" .GitInfo.Hash }}">{{ .GitInfo.AbbreviatedHash}}</a>
+<br>
+Last modified on {{ .Lastmod.Format "02/01/2006" }}
+<hr>
 
 {{ end }}

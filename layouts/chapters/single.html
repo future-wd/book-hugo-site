@@ -1,0 +1,47 @@
+{{ define "main" }}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>Converting to float</h2>
+      {{/* string to float */}}
+      <p>
+        {{ $string := "1.784" }} {{ $string }} is a {{ printf "%T" $string}}
+      </p>
+      <p>{{/* integer to float */}} {{ $integer := 32 }} {{ $integer }} is a {{
+        printf "%T" $integer}}</p>
+      <p>{{ $float := float $integer }} {{ $float }} is a {{ printf "%T" $float}}</p>
+  
+
+      
+      <h2>Converting to Integer</h2>
+      {{/* string to integer (string can't be decimal) */}}
+      <p>    {{ $string := "17"
+      }} {{ $string }} is a {{ printf "%T" $string}}</p>
+      <p></p>
+
+ 
+      <br />
+      {{ $integer := int $string }} {{ $integer }} is a {{ printf "%T"
+      $integer}}
+      <br />
+      {{/* string with decimal to integer (convert string to float first) */}}
+      {{ $string := "17.374" }} {{ $string }} is a {{ printf "%T" $string}}
+      <br />
+      {{ $integer := int (float $string) }}{{/* math.Round could also be used
+      with the same functionality */}} {{ $integer }} is a {{ printf "%T"
+      $integer}}
+      <br />
+      {{/* float to integer (removed decimal portion of number) */}} {{ $float
+      := 23.373 }} {{ $float }} is a {{ printf "%T" $float}}
+      <br />
+      {{ $integer := int $float }} {{ $integer }} is a {{ printf "%T" $integer}}
+      <h2>Advanced Operators</h2>
+
+      <h2>Comparison Operators</h2>
+      ge 4 3 = {{ ge 4 3 }} gt 4 3 = {{ gt 4 3 }} {{ ge 4 3 }} => true {{ gt 4 3
+      }} => true {{ le 3 3 }} => true {{ lt 2 3 }} => true {{ ne 1 2 }} => true
+    </div>
+  </div>
+</div>
+
+{{ end }}
