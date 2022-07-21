@@ -1,47 +1,97 @@
 {{ define "main" }}
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h2>Converting to float</h2>
-      {{/* string to float */}}
-      <p>
-        {{ $string := "1.784" }} {{ $string }} is a {{ printf "%T" $string}}
-      </p>
-      <p>{{/* integer to float */}} {{ $integer := 32 }} {{ $integer }} is a {{
-        printf "%T" $integer}}</p>
-      <p>{{ $float := float $integer }} {{ $float }} is a {{ printf "%T" $float}}</p>
-  
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>Converting to float</h2>
+        {{/* string to float */}}
+        <p>
+          {{ $string := "1.784" }} {{ $string }} is a
+          {{ printf "%T" $string }}
+        </p>
+        {{/* integer to float */}}
+        <p>
+          {{ $integer := 32 }} {{ $integer }} is a
+          {{ printf "%T" $integer }}
+        </p>
+        <p>
+          {{ $float := float $integer }} {{ $float }} is a
+          {{ printf "%T" $float }}
+        </p>
 
-      
-      <h2>Converting to Integer</h2>
-      {{/* string to integer (string can't be decimal) */}}
-      <p>    {{ $string := "17"
-      }} {{ $string }} is a {{ printf "%T" $string}}</p>
-      <p></p>
+        <h2>Converting to Integer</h2>
+        {{/* string to integer (string can't be decimal) */}}
+        <p>
+          {{ $string := "17" }} {{ $string }} is a
+          {{ printf "%T" $string }}
+        </p>
+        <p>
+          {{ $integer := int $string }} {{ $integer }} is a
+          {{ printf "%T"
+            $integer
+          }}
+        </p>
+        {{/* string with decimal to integer (convert string to float first) */}}
+        <p>
+          {{ $string := "17.374" }} {{ $string }} is a
+          {{ printf "%T" $string }}
+        </p>
+        <p>
+          {{ $integer := int (float $string) }}{{/* math.Round could also be used
+            with the same functionality
+          */}}
+          {{ $integer }} is a
+          {{ printf "%T" $integer }}
+        </p>
+        {{/* float to integer (removed decimal portion of number) */}}
+        <p>
+          {{ $float := 23.373 }}
+          {{ $float }} is a
+          {{ printf "%T" $float }}
+        </p>
+        <p>
+          {{ $integer := int $float }} {{ $integer }} is a
+          {{ printf "%T" $integer }}
+        </p>
+        <h2>Simple Operators (functions)</h2>
+        <p>
+          add 1 2 =
+          {{ add 1 2 }}
+        </p>
+        <p>
+          sub 2 1 =
+          {{ sub 2 1 }}
+        </p>
+        <p>
+          mul 2 2 =
+          {{ mul 2 2 }}
+        </p>
+        <p>
+          div 7 3 =
+          {{ div 7 3 }}
+        </p>
+        <p>div (float 7) 3 = {{ div (float 7) 3 }}</p>
 
- 
-      <br />
-      {{ $integer := int $string }} {{ $integer }} is a {{ printf "%T"
-      $integer}}
-      <br />
-      {{/* string with decimal to integer (convert string to float first) */}}
-      {{ $string := "17.374" }} {{ $string }} is a {{ printf "%T" $string}}
-      <br />
-      {{ $integer := int (float $string) }}{{/* math.Round could also be used
-      with the same functionality */}} {{ $integer }} is a {{ printf "%T"
-      $integer}}
-      <br />
-      {{/* float to integer (removed decimal portion of number) */}} {{ $float
-      := 23.373 }} {{ $float }} is a {{ printf "%T" $float}}
-      <br />
-      {{ $integer := int $float }} {{ $integer }} is a {{ printf "%T" $integer}}
-      <h2>Advanced Operators</h2>
-
-      <h2>Comparison Operators</h2>
-      ge 4 3 = {{ ge 4 3 }} gt 4 3 = {{ gt 4 3 }} {{ ge 4 3 }} => true {{ gt 4 3
-      }} => true {{ le 3 3 }} => true {{ lt 2 3 }} => true {{ ne 1 2 }} => true
+        <h2>Advanced Operators (functions)</h2>
+        <p>mod 6 2 = {{ mod 6 2 }}</p>
+        <p>math.Ceil 3.56 = {{ math.Ceil 3.56 }}</p>
+        <p>math.Floor 3.56 = {{ math.Floor 3.56 }}</p>
+        <p>math.Round 3.56 = {{ math.Round 3.56 }}</p>
+        <p>math.Round 3.4 = {{ math.Round 3.4 }}</p>
+        <p>math.Log 5.5 = {{ math.Log 5.5 }}</p>
+        <p>math.Max 4.1 4 = {{ math.Max 4.1 4 }}</p>
+        <p>math.Min 3.3 3.2 = {{ math.Min 3.3 3.2 }}</p>
+        <p>math.Pow 3 2 = {{ math.Pow 3 2 }}</p>
+        <p>math.Sqrt 9 = {{ math.Sqrt 9 }}</p>
+        <h2>Comparison Operators</h2>
+        <p>ge 4 3 = {{ ge 4 3 }}</p>
+        <p>gt 4 3 = {{ gt 4 3 }}</p>
+        <p>le 3 3 = {{ le 3 3 }}</p>
+        <p>lt 2 3 = {{ lt 2 3 }}</p>
+        <p>ne 1 2 = {{ ne 1 2 }}</p>
+        <p>Hugo checks for strick equality...</p>
+        <p>eq "1" 1 = {{ eq "1" 1 }}</p>
+        <p>ne "true" true = {{ ne "true" true }}</p>
+      </div>
     </div>
   </div>
-</div>
-
 {{ end }}
