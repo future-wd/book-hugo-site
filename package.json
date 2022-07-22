@@ -1,4 +1,14 @@
 {
+  "scripts": {
+    "dev": "hugo server --gc --disableFastRender ",
+    "dev:preview": "npm run dev -- --buildDrafts --buildFuture",
+    "build": "hugo -v --gc --minify --cleanDestinationDir",
+    "renderToDisk": "hugo server --gc --disableFastRender --renderToDisk --cleanDestinationDir ",
+    "renderToDisk:preview": "npm run renderToDisk -- --buildDrafts --buildFuture ",
+    "renderToDisk:production": "npm run renderToDisk -- --minify --environment production",
+    "npm-check": "npx npm-check -u",
+    "hugo version": "hugo version"
+  },
   "devDependencies": {
     "prettier": "^2.7.1",
     "prettier-plugin-go-template": "^0.0.13"
