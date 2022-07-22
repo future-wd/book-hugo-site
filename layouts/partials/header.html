@@ -1,4 +1,5 @@
 header
   {{ range .Site.Menus.main }}
-    {{ . }}
+    .Identifier {{ .Identifier }}
+    .Name {{ .Name }}
   {{ end }}

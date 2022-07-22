@@ -8,3 +8,7 @@ enableGitInfo: true
 
 Params:
   customParam: Set in site's config
+
+Menus:
+  main:
+  - pageRef: chapters/numbers

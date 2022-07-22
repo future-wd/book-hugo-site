@@ -3,6 +3,7 @@ title: "Render hooks"
 date: 2022-07-20T08:25:17-08:00
 draft: false
 type: render-hooks
+menu: main
 ---
 Default render hook templates are places in `layouts/_default/_markup/render-[element].html`. Render hook templates examples for this page have been placed in `layout/render-hooks/render-[element].html` because `type: render-hooks` has been set in the front matter above. Hugo will then look in the `layouts/render-hooks` directory before `layouts/_default`.
 
