@@ -1,0 +1,19 @@
+{{ $attributes := slice }}
+{{ if .Attributes }}
+  {{ range $key, $value := .Attributes  }}
+    {{ if and (ne $key "id") (ne $key "class") }}
+      {{ $attribute := printf "%s=\"%s\"" $key $value}}
+      {{ $attributes = $attributes | append $attribute }}
+    {{ end }}
+  {{ end }}
+{{ end}}
+{{ $options := (dict "style" "dark" "lineNos" true) }}
+{{ $mergedOptions := merge $options .Options}}
+
+<div class="custom-codeblock {{ .Attributes.class }}" 
+  id="{{ .Attributes.id }}" 
+  {{ with $attributes }}{{ delimit . " " | safeHTMLAttr }}{{ end }}
+  >
+  {{ highlight .Inner .Type $mergedOptions }}
+</div>
+

@@ -1,0 +1,41 @@
+{{/* set default id of .Anchor */}}
+{{ $id := .Anchor }}
+{{ with .Attributes.id }}
+  {{ $id = . }}
+{{ end }}
+{{/* create array of attributes which aren't id or class */}}
+{{ $attributes := slice }}
+{{ range $key, $value := .Attributes  }}
+  {{ if and (ne $key "id") (ne $key "class") }}
+    {{/* use printf to create key="value" string for each attribute */}}
+    {{ $attribute := printf "%s=\"%s\"" $key $value}}
+    {{/* add generated string to the $attributes array */}}
+    {{ $attributes = $attributes | append $attribute }}
+  {{ end }}
+{{ end }}
+{{/* use delimit to print the array with a space between each element */}}
+<h{{ .Level }} id="{{ $id }}" class="hardcoded-class {{ .Attributes.class }}"
+  {{ delimit $attributes " " | safeHTMLAttr }}>
+  {{- .Text | safeHTML -}}
+</h{{ .Level }}>
+
+{{/* set default id of .Anchor */}}
+{{ $id := .Anchor }}
+{{ with .Attributes.id }}
+  {{ $id = . }}
+{{ end }}
+{{/* create array of attributes which aren't id or class */}}
+{{ $attributes := slice }}
+{{ range $key, $value := .Attributes  }}
+  {{ if and (ne $key "id") (ne $key "class") }}
+    {{/* use printf to create key="value" string for each attribute */}}
+    {{ $attribute := printf "%s=\"%s\"" $key $value}}
+    {{/* add generated string to the $attributes array */}}
+    {{ $attributes = $attributes | append $attribute }}
+  {{ end }}
+{{ end }}
+{{/* use delimit to print the array with a space between each element */}}
+<h{{ .Level }} id="{{ $id }}" class="hardcoded-class {{ .Attributes.class }}"
+  {{ delimit $attributes " " | safeHTMLAttr }}>
+  {{- .Text | safeHTML -}}
+</h{{ .Level }}>
