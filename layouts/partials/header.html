@@ -1,5 +1,30 @@
-header
-  {{ range .Site.Menus.main }}
-    .Identifier {{ .Identifier }}
-    .Name {{ .Name }}
-  {{ end }}
+<nav>
+  <div class="nav">
+    {{- range .Site.Menus.main }}
+      {{ if .HasChildren }}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle{{ if $.HasMenuCurrent " main" . }} active{{ end }}" href="#">
+          {{ .Pre }}<span>{{ .Name }}</span>{{ .Post }}
+        </a>
+        <ul class="dropdown-menu">
+          {{- range .Children }}
+            <li>
+              <a class="dropdown-item{{ if $.IsMenuCurrent " main" . }} active" aria-current="page{{ end }}"
+                href="{{ .URL }}">
+                {{ .Pre }}<span>{{ .Name }}</span>{{ .Post }}
+              </a>
+            </li>
+          {{- end }}
+        </ul>
+      </li>
+      {{- else }}
+      <li class="nav-item">
+        <a class="nav-link{{ if $.IsMenuCurrent " main" . }} active" aria-current="page{{ end }}"
+          href="{{ .URL }}">
+          {{ .Pre }}<span>{{ .Name }}</span>{{ .Post }}
+        </a>
+      </li>
+      {{- end -}}
+    {{- end }}
+  </div>
+</nav>
