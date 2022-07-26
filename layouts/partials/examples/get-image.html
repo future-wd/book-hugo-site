@@ -1,0 +1,9 @@
+{{ $image := false }}
+{{ with .Params.images }}
+  {{ if reflect.IsSlice }}
+    {{ $image = index . 0 }}
+  {{ else if (eq (printf "%T" .) "string")}}
+    {{ $image = . }}
+  {{ end }}
+{{ end }}
+{{ return $image }}
